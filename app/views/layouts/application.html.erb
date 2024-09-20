@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WTF should I do in the gym?</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <!-- Add Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-neutral-50">
+    <%= yield %>
+    <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+      <%
+=begin%>
+ <p class="text-slate-400 leading-relaxed">🐀 Track your workouts with <%= link_to 'Gymrat', '#', class: "text-blue-500" %> &nbsp; - &nbsp; 🚀 Built by <%= link_to 'Yeah, Definitely!', '#', class: "text-blue-500" %></p> 
+<%
+=end%>
+    </div>
+  </body>
+</html>

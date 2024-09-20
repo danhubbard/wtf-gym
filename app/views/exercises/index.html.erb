@@ -1,0 +1,21 @@
+<div class="min-h-screen flex flex-col justify-center md:w-3/4 lg:w-[60%] mx-auto p-5 sm:p-4 relative">
+  <div class="text-slate-800">
+    <h1 class="text-5xl md:text-6xl font-bold mb-8">
+      <%= ['bulk up', 'heap gains on', 'beast', 'polish', 'smash', 'hit', 'destroy', 'pump', 'jack up'].sample.upcase %> YOUR <%= @exercise.primary_muscles.first.upcase %> WITH SOME <%= ['naughty', 'gnarly', 'hardcore', 'radical', 'fiesty', 'intense', 'dirty'].sample.upcase %>
+    </h1>
+    
+    <h2 class="text-3xl md:text-5xl font-bold mb-12 relative inline-block">
+      <span class="relative z-10"><%= @exercise.name.pluralize.upcase %></span>
+      <span class="absolute -inset-y-2 -inset-x-2 bg-yellow-200 -skew-y-0 transform -rotate-1" style="z-index: 0;"></span>
+    </h2>
+
+    <% if @exercise.secondary_muscles.any? %>
+      <p class="text-slate-400 leading-relaxed">...also works your <%= @exercise.secondary_muscles.to_sentence  %></p>
+    <% end %>
+    
+    <div class="sm:flex justify-between items-center w-full text-xl md:text-2xl font-medium mt-12 gap-8">
+      <p class="mb-8"><%= link_to '✅ FUCK YEAH. SHOW ME HOW.', @exercise, class: "text-green-500" %></p>
+      <p><%= link_to "❌ I'M NOT FUCKING DOING THAT.", "", class: "text-red-500" %></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="flex flex-col max-w-screen-md mx-auto px-4 py-5 sm:py-12 text-slate-800">
+  <%= link_to '&larr; Back'.html_safe, :root, class: 'text-blue-600' %>
+
+  <h1 class="text-5xl md:text-6xl font-bold mb-8 mt-5 sm:mt-12">
+    <%= @exercise.name %>
+  </h1>
+
+  <% targets = @exercise.primary_muscles + @exercise.secondary_muscles %>
+
+  <div class="mb-12">
+    <div class="flex flex-wrap gap-4">
+      <p class="px-4 py-2 rounded-2xl bg-neutral-200">💪🏼 <strong>Works:</strong> <%= targets.to_sentence.titlecase %></p>
+      <p class="px-4 py-2 rounded-2xl bg-neutral-200">🥇 <strong>Level:</strong> <%= @exercise.level.titlecase %></p>
+      <p class="px-4 py-2 rounded-2xl bg-neutral-200">🔋 <strong>Force:</strong> <%= @exercise.force&.titlecase.presence || 'N/A' %></p>
+      <p class="px-4 py-2 rounded-2xl bg-neutral-200">🦾 <strong>Mechanic:</strong> <%= @exercise.mechanic&.titlecase.presence || 'N/A' %></p>
+      <p class="px-4 py-2 rounded-2xl bg-neutral-200">🏋🏻‍♂️ <strong>Equipment:</strong> <%= @exercise.equipment&.titlecase.presence || 'N/A' %></p>
+    </div>
+  </div>
+  
+  <div class="mb-12">
+    <h2 class="text-3xl font-bold mb-8">Instructions:</h2>
+    <ol class="list-decimal ml-5 space-y-4">
+    <% @exercise.instructions.each do |ins| %>
+      <li><%= ins %></li>
+    <% end %>
+    </ol>
+  </div>
+
+  <div class="mb-12">
+    <div class="sm:flex sm:flex-wrap sm:gap-4">
+      <div class="sm:hidden overflow-x-auto snap-x snap-mandatory">
+        <div class="flex space-x-4">
+          <% @exercise.images.each do |image| %>
+            <div class="w-4/5 flex-shrink-0 snap-center">
+              <%= image_tag image, class: 'w-full rounded-md' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% @exercise.images.each do |image| %>
+        <div class="hidden sm:block sm:w-[calc(50%-0.5rem)]">
+          <%= image_tag image, class: 'w-full rounded-md' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
